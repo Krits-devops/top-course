@@ -19,7 +19,7 @@ const App = () => {
     try{
         let response = await fetch(apiUrl);
         let output = await response.json();
-        setCourses(output);
+        setCourses(output.data);
     }
     catch(error){
 
