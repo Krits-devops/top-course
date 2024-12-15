@@ -1,28 +1,29 @@
-import React from "react";
-import Card from "./Card";
+import React from 'react'
+import Card from './Card';
+const Cards = function (props) {
+    let courses = props.courses;
+    console.log('printng data')
+    console.log(courses);
 
-const Cards = ({courses})=>{
-
-    // It return all courses information recieved from api response.
-     let allCourses=[];
-    const getCourses = ()=>{
-        Object.values(courses).forEach((courseCategory)=>{
-            courseCategory.forEach((course)=>{
-                allCourses.push(course);
-        })
-    })
-    return allCourses;
-   
-}   
-    return(
-        <div>
-            {
-            getCourses().map((course)=>{
-                <Card/>
+    function getCourses(){
+        let allCourses = [];
+        Object.values(courses).forEach(array =>{
+            array.forEach(courseData =>{
+                allCourses.push(courseData);
             })
+        })
+        return allCourses;
+    }
+
+  return (
+    <div>
+        {
+            getCourses().map((course)=>(
+                <Card key={courses.id} course={course}/>
+            ))
         }
-        </div>
-    )
+    </div>
+  )
 }
 
 export default Cards;

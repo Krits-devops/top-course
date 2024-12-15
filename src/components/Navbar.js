@@ -1,6 +1,6 @@
 
 
-const Navabar = ()=>{
+const Navbar = ()=>{
     return(
         <div>
             <nav>
@@ -10,4 +10,4 @@ const Navabar = ()=>{
     )
 }
 
-export default Navabar;
+export default Navbar;
