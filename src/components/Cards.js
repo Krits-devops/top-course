@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Card from './Card';
 const Cards = function (props) {
     let courses = props.courses;
+    const [likedCourses, setLikedCourses] = useState([]);
     console.log('printng data')
     console.log(courses);
 
@@ -16,10 +17,12 @@ const Cards = function (props) {
     }
 
   return (
-    <div>
+    <div className='flex flex-wrap justify-center gap-4 mb-4'>
         {
             getCourses().map((course)=>(
-                <Card key={courses.id} course={course}/>
+                <Card key={courses.id} course={course} 
+                likeCourses={likedCourses}
+                setLikedCourses={setLikedCourses}/>
             ))
         }
     </div>
