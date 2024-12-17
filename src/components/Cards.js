@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Card from './Card';
 const Cards = function (props) {
     let courses = props.courses;
+    let category = props.category;
 
     const [likedCourses, setLikedCourses] = useState([]);
 
@@ -9,20 +10,26 @@ const Cards = function (props) {
     console.log(courses);
 
     function getCourses(){
-        let allCourses = [];
-        Object.values(courses).forEach(array =>{
-            array.forEach(courseData =>{
-                allCourses.push(courseData);
+        if(category === 'All'){
+            let allCourses = [];
+            Object.values(courses).forEach(array =>{
+                array.forEach(courseData =>{
+                    allCourses.push(courseData);
+                })
             })
-        })
-        return allCourses;
+            return allCourses;
+        
+        } else{
+
+            return courses[category];
+        }
     }
 
   return (
     <div className='flex flex-wrap justify-center gap-4 mb-4'>
         {
             getCourses().map((course)=>(
-                <Card key={courses.id} course={course} 
+                <Card key={course.id} course={course} 
                 likedCourses={likedCourses}
                 setLikedCourses={setLikedCourses}/>
             ))
